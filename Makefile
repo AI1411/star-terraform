@@ -1,7 +1,9 @@
 .PHONY: tf-init
 tf-init:
-	docker run --rm -v $(pwd):/app/ -w /app/ hashicorp/terraform:latest init
+	docker-compose run --rm terraform init
 tf-plan:
-	docker run --rm -v $(pwd):/app/ -w /app/ hashicorp/terraform:latest plan
+	docker-compose run --rm terraform plan
 tf-apply:
-	docker run --rm -v $(pwd):/app/ -w /app/ hashicorp/terraform:latest apply
+	docker-compose run --rm terraform apply
+tf-destroy:
+	docker-compose run --rm terraform destroy
