@@ -80,6 +80,14 @@ resource "aws_security_group_rule" "star_sg_rule_egress" {
   cidr_blocks = ["0.0.0.0/0"]
 }
 
+resource "aws_ecr_repository" "star_ecr" {
+  name = "star"
+}
+
+output "ecr_repository_url" {
+  value = aws_ecr_repository.star_ecr.repository_url
+}
+
 resource "aws_instance" "star_ec2" {
   ami           = "ami-02a2700d37baeef8b" # Amazon Linux 2 LTS AMI (HVM) in ap-northeast-1
   instance_type = "t2.micro"
